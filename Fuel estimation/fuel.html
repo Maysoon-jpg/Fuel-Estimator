@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body,
+    html {
+      height: 90%;
+    }
+
+    body {
+      background-color: #0e0d14;
+    }
+
+    .distance,
+    .mpg,
+    .fuelPrice {
+      background-color: #272c38;
+      color: white;
+      padding: 6px 6px 6px 6px;
+      border-radius: 5px;
+      border: none;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      display: block;
+      margin: 20px 0px 20px 0px;
+
+    }
+
+    .calculateButton {
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      background-color: #3a3f4b;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 40px 10px 40px;
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background-color, 0.2s
+    }
+
+    .calculateButton:hover {
+      background-color: #212330;
+    }
+
+    .showCost,
+    .showEmission,
+    .showCostPerMile {
+      margin-top: 10px;
+      background: linear-gradient(180deg, #fcc6c4, #faa4a1);
+      border: none;
+      color: white;
+      font-size: larger;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 10px 10px 10px 10px;
+      height: 150px;
+      width: 200px;
+      margin: 10px 10px 10px 10px;
+
+
+
+    }
+
+    .showEmission {
+      background: linear-gradient(180deg, #deb9e7, #8363f2);
+    }
+
+    .showCostPerMile {
+      background: linear-gradient(180deg, #e6e0e7, #e98ec8);
+
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .titleText {
+
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bolder;
+      font-size: large;
+      opacity: 0.7;
+    }
+
+    .mainArea {
+      display: flex;
+      flex-direction: row;
+      background-color: #14171f;
+      padding: 40px 40px 40px 40px;
+      border-radius: 10px;
+    }
+
+    .leftSection {
+      background-color: #1e232f;
+      padding: 0px 30px 30px 30px;
+      border-radius: 10px;
+    }
+
+    .inputType {
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    .rightSection {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .pageCentre {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1c1e2b;
+      height: 100%;
+    }
+
+    .measurementType {
+      color: black;
+      display: block;
+      font-size: small;
+      padding-bottom: 10px;
+      opacity: 0.7;
+    }
+  </style>
+  <title>Fuel Estimator</title>
+</head>
+
+<body>
+  <div class="title">
+    <p class="titleText">Fuel Estimation Calculator</p>
+  </div>
+  <div class="pageCentre">
+    <div class="mainArea">
+      <div class="leftSection">
+
+        <p class="inputType">Distance(miles)</p>
+        <input placeholder="Distance (miles)" class="distance">
+        <p class="inputType">Miles per gallon (mpg) </p>
+        <input placeholder="Miles per gallon (mpg)" class="mpg">
+        <p class="inputType">Fuel Price (per gallon) </p>
+        <input placeholder="Fuel Price (per gallon)" class="fuelPrice">
+        <button onclick="
+      /* 
+        containerVisible('showEmission')
+        containerVisible('showCost')
+        containerVisible('showCostPerMile') */
+        calculateCost(); calculateEmission(); calculateCostPerMile(); falseValues()" class="calculateButton">CALCULATE</button>
+
+      </div>
+      <div class="rightSection"> <button class="showCost"> <span class="measurementType">Fuel Cost:</span>
+          <span class="inputCost">$0.00</span> </button>
+        <button class="showCostPerMile"> <span class="measurementType">Cost per mile:</span> <span
+            class="inputCostPerMile">$0.00</span> </button>
+        <button class="showEmission"> <span class="measurementType">Emissions:</span> <span
+            class="inputEmissions">0.00kg</span></button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    function calculateCost() {
+
+
+
+      const distance = document.querySelector('.distance').value
+      const mpg = document.querySelector('.mpg').value
+      const fuel = document.querySelector('.fuelPrice').value
+
+      const fuelCostUnrounded = (distance / mpg) * fuel
+      const fuelCostRounded = fuelCostUnrounded.toFixed(2)
+      console.log(fuelCostRounded)
+      document.querySelector('.inputCost').innerHTML = ` $${fuelCostRounded}`
+    }
+
+    function calculateEmission() {
+      const distance = document.querySelector('.distance').value
+      const mpg = document.querySelector('.mpg').value
+      const fuel = document.querySelector('.fuelPrice').value
+      const fuelNeeded = distance / mpg
+      const emissionsUnrounded = fuelNeeded * 8.89
+      const emissionsRounded = emissionsUnrounded.toFixed(2)
+      document.querySelector('.inputEmissions').innerHTML = ` ${emissionsRounded}kg`
+
+    }
+
+    function calculateCostPerMile() {
+      const distance = document.querySelector('.distance').value
+      const mpg = document.querySelector('.mpg').value
+      const fuel = document.querySelector('.fuelPrice').value
+      const costPerMileU = fuel / distance
+      const costPerMileR = costPerMileU.toFixed(2)
+      document.querySelector('.inputCostPerMile').innerHTML = `$${costPerMileR}`
+    }
+
+    function falseValues() {
+       const distance = document.querySelector('.distance').value
+      const mpg = document.querySelector('.mpg').value
+      const fuel = document.querySelector('.fuelPrice').value
+      if (isNaN(distance) || isNaN(mpg) || isNaN(fuel) ||
+    distance <= 0 || mpg <= 0 || fuel <= 0) {
+        alert("Please enter valid values.");
+        return;
+      }
+
+    }
+
+
+    /*   function containerVisible(id) {
+       const container = document.querySelector("." + id);
+       container.style.opacity = 1;
+       console.log('visiblised')
+   
+      } */
+
+
+
+
+  </script>
+</body>
+
+</html>
