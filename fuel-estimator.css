@@ -1,0 +1,126 @@
+   body,
+    html {
+      height: 90%;
+    }
+
+    body {
+      background-color: #0e0d14;
+    }
+
+    .distance,
+    .mpg,
+    .fuelPrice {
+      background-color: #272c38;
+      color: white;
+      padding: 6px 6px 6px 6px;
+      border-radius: 5px;
+      border: none;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      display: block;
+      margin: 20px 0px 20px 0px;
+
+    }
+
+    .calculateButton {
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      background-color: #3a3f4b;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 40px 10px 40px;
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: background-color, 0.2s
+    }
+
+    .calculateButton:hover {
+      background-color: #212330;
+    }
+
+    .showCost,
+    .showEmission,
+    .showCostPerMile {
+      margin-top: 10px;
+      background: linear-gradient(180deg, #fcc6c4, #faa4a1);
+      border: none;
+      color: white;
+      font-size: larger;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 10px 10px 10px 10px;
+      height: 150px;
+      width: 200px;
+      margin: 10px 10px 10px 10px;
+
+
+
+    }
+
+    .showEmission {
+      background: linear-gradient(180deg, #deb9e7, #8363f2);
+    }
+
+    .showCostPerMile {
+      background: linear-gradient(180deg, #e6e0e7, #e98ec8);
+
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .titleText {
+
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bolder;
+      font-size: large;
+      opacity: 0.7;
+    }
+
+    .mainArea {
+      display: flex;
+      flex-direction: row;
+      background-color: #14171f;
+      padding: 40px 40px 40px 40px;
+      border-radius: 10px;
+    }
+
+    .leftSection {
+      background-color: #1e232f;
+      padding: 0px 30px 30px 30px;
+      border-radius: 10px;
+    }
+
+    .inputType {
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    .rightSection {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .pageCentre {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1c1e2b;
+      height: 100%;
+    }
+
+    .measurementType {
+      color: black;
+      display: block;
+      font-size: small;
+      padding-bottom: 10px;
+      opacity: 0.7;
+    }
